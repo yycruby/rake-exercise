@@ -1,8 +1,8 @@
 require 'bundler/setup'
-require 'rspec/core/rake_task'
+require 'cucumber/rake/task'
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.rspec_opts = '--format documentation'
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
 end
 
-task :default => :spec
+task :default => :features

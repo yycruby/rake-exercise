@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'rake', require: false
-gem 'rspec', require: false
+gem 'rake', '~> 10.4.2'
+gem 'aruba', '~> 0.10.2'
