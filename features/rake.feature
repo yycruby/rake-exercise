@@ -6,8 +6,8 @@ Feature: Rake
         puts "Hello, world!"
       end
       """
-    When I successfully run `rake hello`
-    Then the stdout should contain:
+    When I run `bin/rake hello`
+    Then the output should contain:
       """
       Hello, world!
       """
@@ -23,8 +23,8 @@ Feature: Rake
         print 'world!'
       end
     """
-    When I run `rake hello world`
-    Then the stdout should contain:
+    When I successfully run `bin/rake hello world`
+    Then the output should contain:
       """
       Hello, world!
       """
@@ -32,7 +32,7 @@ Feature: Rake
   Scenario: Basic interdependent tasks
     Given a Rakefile with:
       """
-      task :hello, [:foo] do
+      task :bar => :foo do
         print 'bar'
       end
 
@@ -40,8 +40,8 @@ Feature: Rake
         print 'foo'
       end
       """
-    When I run `rake bar`
-    Then the stdout should contain:
+    When I successfully run `bin/rake bar`
+    Then the output should contain:
       """
       foobar
       """
