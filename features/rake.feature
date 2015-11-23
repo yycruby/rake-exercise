@@ -12,6 +12,23 @@ Feature: Rake
       Hello, world!
       """
 
+  Scenario: Running a task with multiple actions
+    Given a Rakefile with:
+      """
+      task :hello do
+        print "Hello, "
+      end
+
+      task :hello do
+        print "world!"
+      end
+      """
+    When I run `bin/rake hello`
+    Then the output should contain:
+      """
+      Hello, world!
+      """
+
   Scenario: Running multiple tasks
     Given a Rakefile with:
       """
